@@ -23,7 +23,7 @@
 window.onload = function () {
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
-		instrument: "aah",
+		instrument: "eeh",
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
@@ -38,15 +38,6 @@ window.onload = function () {
 
 			MIDI.noteOn(0, note, velocity, 1.1);
 			MIDI.noteOff(0, note, 2.1);
-
-			MIDI.noteOn(2, note, velocity, 2.2);
-			MIDI.noteOff(2, note, 3.2);
-
-			MIDI.noteOn(3, note, velocity, 3.3);
-			MIDI.noteOff(3, note, 4.3);
-
-			MIDI.noteOn(4, note, velocity, 4.4);
-			MIDI.noteOff(4, note, 5.4);
 		}
 	});
 };
