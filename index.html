@@ -24,6 +24,7 @@ window.onload = function () {
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
 		instrument: "v2",
+		targetFormat: 'mp3',
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
