@@ -24,7 +24,7 @@ window.onload = function () {
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
 		//targetFormat: 'mp3',
-		instrument: "eeh",
+		instrument: "aah",
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
@@ -32,13 +32,13 @@ window.onload = function () {
 			var note = 50; // the MIDI note
 			var velocity = 127; // how hard the note hits
 			// play the note
-			MIDI.setVolume(2, 127);
+			MIDI.setVolume(0, 127);
 
-			MIDI.noteOn(2, note, velocity, 0);
-			MIDI.noteOff(2, note, 2);
+			MIDI.noteOn(0, note, velocity, 0);
+			MIDI.noteOff(0, note, 3);
 
-			MIDI.noteOn(2, note, velocity, 3);
-			MIDI.noteOff(2, note, 4);
+			MIDI.noteOn(0, note, velocity, 4);
+			MIDI.noteOff(0, note, 5);
 		}
 	});
 };
