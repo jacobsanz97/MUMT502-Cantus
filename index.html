@@ -18,44 +18,59 @@
 	<script src="./js/util/dom_request_script.js" type="text/javascript"></script>
 </head>
 <body>
+	
 <script type="text/javascript">
-
-
-window.onload = function () {
+volpiano2midi(input_str, note_dur) {
+	
+	//construct dictionary with pitch values
+	var pitch_dict = {};
+	pitch_dict['9'] = 43;
+	pitch_dict['a'] = 45;
+	pitch_dict['b'] = 47;
+	pitch_dict['c'] = 48;
+	pitch_dict['d'] = 50;
+	pitch_dict['e'] = 52;
+	pitch_dict['f'] = 53;
+	pitch_dict['g'] = 55;
+	pitch_dict['h'] = 57;
+	pitch_dict['j'] = 59;
+	pitch_dict['k'] = 60;
+	pitch_dict['l'] = 62;
+	pitch_dict['m'] = 64;
+	pitch_dict['n'] = 65;
+	pitch_dict['o'] = 67;
+	pitch_dict['p'] = 69;
+	pitch_dict['q'] = 71;
+	pitch_dict['r'] = 72;
+	pitch_dict['s'] = 74;	
+	
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
 		instrument: "vowels",
-		//instruments: [ "a", "e" , "i", "o", "u"],
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
 		onsuccess: function() {
+			
 			MIDI.setVolume(0, 127);
-			//MIDI.setVolume(1, 127);
-			
-			MIDI.programChange(0, 0); //AAA
-			MIDI.noteOn(0, 50, 127, 0);
-			MIDI.noteOff(0, 50, 2);
-			
-			MIDI.programChange(0, 1); //EEE
-			MIDI.noteOn(0, 51, 127, 2);
-			MIDI.noteOff(0, 51, 4);
-			
-			MIDI.programChange(0, 2); //III
-			MIDI.noteOn(0, 52, 127, 4);
-			MIDI.noteOff(0, 52, 6);
-			
-			MIDI.programChange(0, 3); //OOO
-			MIDI.noteOn(0, 53, 127, 6);
-			MIDI.noteOff(0, 53, 8);			
-			
-			MIDI.programChange(0, 4); //UUU
-			MIDI.noteOn(0, 54, 127, 8);
-			MIDI.noteOff(0, 54, 10);	
+			//iterate through each character, check if in dictionary, play the corresponding pitch
+			for (var i = 0; i < input_str.length; i++) {
+				if (input_str.charAt(i) in pitch_dict){
+					player.queueWaveTable(audioContext, audioContext.destination, selectedPreset, 0, pitch_dict[input_str.charAt(i)], note_dur);
+					MIDI.programChange(0, i%5);
+					MIDI.noteOn(0, pitch_dict[input_str.charAt(i)], 127, note_dur*i);
+					MIDI.noteOff(0, pitch_dict[input_str.charAt(i)], note_dur*(i+1));
+				}
+			}	
 		}
 	});	
 	
 };
 </script>
+
+	<p>Volpiano snippet: <input type="text" id="myText" value="Paste Volpiano here..."></p>
+	<p>Tempo: <input type="range" min="20" max="160" value="90" class="slider" id="myRange"></p>
+	<button onclick="volpiano2midi(document.getElementById('myText').value, 60.0/document.getElementById('myRange').value);">Play</button>
+
 </body>
 </html>

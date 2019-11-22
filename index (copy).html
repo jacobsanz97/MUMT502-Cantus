@@ -1,0 +1,61 @@
+
+<html xmlns = "http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<!-- polyfill -->
+	<script src="./inc/shim/Base64.js" type="text/javascript"></script>
+	<script src="./inc/shim/Base64binary.js" type="text/javascript"></script>
+	<script src="./inc/shim/WebAudioAPI.js" type="text/javascript"></script>
+	<!-- midi.js package -->
+	<script src="./js/midi/audioDetect.js" type="text/javascript"></script>
+	<script src="./js/midi/gm.js" type="text/javascript"></script>
+	<script src="./js/midi/loader.js" type="text/javascript"></script>
+	<script src="./js/midi/plugin.audiotag.js" type="text/javascript"></script>
+	<script src="./js/midi/plugin.webaudio.js" type="text/javascript"></script>
+	<script src="./js/midi/plugin.webmidi.js" type="text/javascript"></script>
+	<!-- utils -->
+	<script src="./js/util/dom_request_xhr.js" type="text/javascript"></script>
+	<script src="./js/util/dom_request_script.js" type="text/javascript"></script>
+</head>
+<body>
+<script type="text/javascript">
+
+
+window.onload = function () {
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "vowels",
+		//instruments: [ "a", "e" , "i", "o", "u"],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			MIDI.setVolume(0, 127);
+			//MIDI.setVolume(1, 127);
+			
+			MIDI.programChange(0, 0); //AAA
+			MIDI.noteOn(0, 50, 127, 0);
+			MIDI.noteOff(0, 50, 2);
+			
+			MIDI.programChange(0, 1); //EEE
+			MIDI.noteOn(0, 51, 127, 2);
+			MIDI.noteOff(0, 51, 4);
+			
+			MIDI.programChange(0, 2); //III
+			MIDI.noteOn(0, 52, 127, 4);
+			MIDI.noteOff(0, 52, 6);
+			
+			MIDI.programChange(0, 3); //OOO
+			MIDI.noteOn(0, 53, 127, 6);
+			MIDI.noteOff(0, 53, 8);			
+			
+			MIDI.programChange(0, 4); //UUU
+			MIDI.noteOn(0, 54, 127, 8);
+			MIDI.noteOff(0, 54, 10);	
+		}
+	});	
+	
+};
+</script>
+</body>
+</html>
