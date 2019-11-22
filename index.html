@@ -32,11 +32,11 @@ window.onload = function () {
 		onsuccess: function() {
 			var note = 50; // the MIDI note
 			var velocity = 127; // how hard the note hits
-			MIDI.setVolume(0, 127);
+			MIDI.setVolume(1, 127);
 
-			MIDI.programChange(0, MIDI.GM.byName['a'].number);
-			MIDI.noteOn(0, note, velocity, 0);
-			MIDI.noteOff(0, note, 3);
+			MIDI.programChange(1, MIDI.GM.byName['a'].number);
+			MIDI.noteOn(1, note, velocity, 0);
+			MIDI.noteOff(1, note, 3);
 
 			MIDI.programChange(0, MIDI.GM.byName['u'].number);
 			MIDI.noteOn(0, note + 1, velocity, 3.5);
