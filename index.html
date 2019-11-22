@@ -31,15 +31,27 @@ window.onload = function () {
 		},
 		onsuccess: function() {
 			MIDI.setVolume(0, 127);
-			MIDI.setVolume(1, 127);
+			//MIDI.setVolume(1, 127);
 			
-			MIDI.programChange(0, 0);
+			MIDI.programChange(0, 0); //AAA
 			MIDI.noteOn(0, 50, 127, 0);
 			MIDI.noteOff(0, 50, 2);
 			
-			MIDI.programChange(0, 1);
-			MIDI.noteOn(0, 50, 127, 2);
-			MIDI.noteOff(0, 50, 4);
+			MIDI.programChange(0, 1); //EEE
+			MIDI.noteOn(0, 51, 127, 2);
+			MIDI.noteOff(0, 51, 4);
+			
+			MIDI.programChange(0, 2); //III
+			MIDI.noteOn(0, 52, 127, 4);
+			MIDI.noteOff(0, 52, 6);
+			
+			MIDI.programChange(0, 3); //OOO
+			MIDI.noteOn(0, 53, 127, 6);
+			MIDI.noteOff(0, 53, 8);			
+			
+			MIDI.programChange(0, 4); //UUU
+			MIDI.noteOn(0, 54, 127, 8);
+			MIDI.noteOff(0, 54, 10);	
 		}
 	});	
 	
