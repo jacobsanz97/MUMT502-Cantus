@@ -34,11 +34,10 @@ window.onload = function () {
 			var velocity = 127; // how hard the note hits
 			MIDI.setVolume(1, 127);
 
-			MIDI.programChange(1, MIDI.GM.byName['a'].number);
 			MIDI.noteOn(1, note, velocity, 0);
 			MIDI.noteOff(1, note, 3);
 
-			MIDI.programChange(0, MIDI.GM.byName['u'].number);
+			MIDI.programChange(0, instruments[0]);
 			MIDI.noteOn(0, note + 1, velocity, 3.5);
 			MIDI.noteOff(0, note + 1, 6.5);
 
