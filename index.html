@@ -35,10 +35,12 @@ window.onload = function () {
 			// play the note
 			MIDI.setVolume(0, 127);
 
+
+			MIDI.programChange(0, 1);
 			MIDI.noteOn(0, note, velocity, 0);
 			MIDI.noteOff(0, note, 3);
 
-			MIDI.programChange(0, 1);
+
 			MIDI.noteOn(0, note + 1, velocity, 3.5);
 			MIDI.noteOff(0, note + 1, 6.5);
 
