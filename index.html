@@ -30,11 +30,48 @@ window.onload = function () {
 			console.log(state, progress);
 		},
 		onsuccess: function() {
-			var note = 50; // the MIDI note
-			var velocity = 127; // how hard the note hits
 			MIDI.setVolume(0, 127);
-			MIDI.noteOn(0, note + 5, velocity, 0);
-			MIDI.noteOff(0, note, 3);
+			MIDI.noteOn(0, 50, 127, 0);
+			MIDI.noteOff(0, 50, 2);
+		}
+	});
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "e",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, 51, 127, 2);
+			MIDI.noteOff(0, 51, 4);
+		}
+	});
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "i",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, 52, 127, 4);
+			MIDI.noteOff(0, 52, 6);
+		}
+	});
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "o",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, 53, 127, 6);
+			MIDI.noteOff(0, 53, 8);
 		}
 	});
 	MIDI.loadPlugin({
@@ -45,14 +82,24 @@ window.onload = function () {
 			console.log(state, progress);
 		},
 		onsuccess: function() {
-			var note = 50; // the MIDI note
-			var velocity = 127; // how hard the note hits
 			MIDI.setVolume(0, 127);
-			MIDI.noteOn(0, note + 5, velocity, 3.5);
-			MIDI.noteOff(0, note, 6.5);
+			MIDI.noteOn(0, 54, 127, 8);
+			MIDI.noteOff(0, 54, 10);
 		}
-	});	
-	
+	});			
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "a",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, 55, velocity, 10);
+			MIDI.noteOff(0, 55, 12);
+		}
+	});		
 	
 	
 	
