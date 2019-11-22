@@ -20,23 +20,6 @@
 <body>
 <script type="text/javascript">
 
-window.onload = function () {
-	MIDI.loadPlugin({
-		soundfontUrl: "./soundfont/",
-		instrument: "u",
-		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
-		onprogress: function(state, progress) {
-			console.log(state, progress);
-		},
-		onsuccess: function() {
-			var note = 50; // the MIDI note
-			var velocity = 127; // how hard the note hits
-			MIDI.setVolume(0, 127);
-			MIDI.noteOn(0, note, velocity, 0);
-			MIDI.noteOff(0, note, 3);
-		}
-	});
-};
 
 window.onload = function () {
 	MIDI.loadPlugin({
@@ -50,10 +33,29 @@ window.onload = function () {
 			var note = 50; // the MIDI note
 			var velocity = 127; // how hard the note hits
 			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, note + 5, velocity, 0);
+			MIDI.noteOff(0, note, 3);
+		}
+	});
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "u",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			var note = 50; // the MIDI note
+			var velocity = 127; // how hard the note hits
+			MIDI.setVolume(0, 127);
 			MIDI.noteOn(0, note + 5, velocity, 3.5);
 			MIDI.noteOff(0, note, 6.5);
 		}
-	});
+	});	
+	
+	
+	
+	
 };
 </script>
 </body>
