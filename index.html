@@ -23,28 +23,38 @@
 window.onload = function () {
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
-		//targetFormat: 'mp3',
-		//instrument: "u",
-		instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		instrument: "u",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
 		onsuccess: function() {
 			var note = 50; // the MIDI note
 			var velocity = 127; // how hard the note hits
-			MIDI.setVolume(1, 127);
-
-			MIDI.noteOn(1, note, velocity, 0);
-			MIDI.noteOff(1, note, 3);
-
-			MIDI.programChange(0, instruments[0]);
-			MIDI.noteOn(0, note + 1, velocity, 3.5);
-			MIDI.noteOff(0, note + 1, 6.5);
-
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, note, velocity, 0);
+			MIDI.noteOff(0, note, 3);
 		}
 	});
 };
 
+window.onload = function () {
+	MIDI.loadPlugin({
+		soundfontUrl: "./soundfont/",
+		instrument: "a",
+		//instruments: [ 'a', 'e' , 'i', 'o', 'u'],
+		onprogress: function(state, progress) {
+			console.log(state, progress);
+		},
+		onsuccess: function() {
+			var note = 50; // the MIDI note
+			var velocity = 127; // how hard the note hits
+			MIDI.setVolume(0, 127);
+			MIDI.noteOn(0, note + 5, velocity, 3.5);
+			MIDI.noteOff(0, note, 6.5);
+		}
+	});
+};
 </script>
 </body>
 </html>
