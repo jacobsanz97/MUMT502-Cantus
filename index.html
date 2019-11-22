@@ -56,7 +56,6 @@ function volpiano2midi(input_str, note_dur) {
 			//iterate through each character, check if in dictionary, play the corresponding pitch
 			for (var i = 0; i < input_str.length; i++) {
 				if (input_str.charAt(i) in pitch_dict){
-					player.queueWaveTable(audioContext, audioContext.destination, selectedPreset, 0, pitch_dict[input_str.charAt(i)], note_dur);
 					MIDI.programChange(0, i%5);
 					MIDI.noteOn(0, pitch_dict[input_str.charAt(i)], 127, note_dur*i);
 					MIDI.noteOff(0, pitch_dict[input_str.charAt(i)], note_dur*(i+1));
