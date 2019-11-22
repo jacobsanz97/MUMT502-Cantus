@@ -24,7 +24,8 @@ window.onload = function () {
 	MIDI.loadPlugin({
 		soundfontUrl: "./soundfont/",
 		//targetFormat: 'mp3',
-		instrument: "vowels",
+		//instrument: "u",
+		instruments: [ 'a', 'e' , 'i', 'o', 'u'],
 		onprogress: function(state, progress) {
 			console.log(state, progress);
 		},
